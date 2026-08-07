@@ -40,7 +40,9 @@ problems with mise.
 
 ## What's here
 
-- `index.html`, `styles.css`, `main.ts` --- a minimal starting site. Replace it.
+- `src/pages/`, `src/styles/` --- the site, on Astro (swapped from the
+  template's default Vite/vanilla setup --- see `CLAUDE.md`). Replace it.
+- `astro.config.mjs` --- sets the GitHub Pages base path.
 - `mise.toml` --- the tested Node and pnpm versions for this template.
 - `spec/` --- what the checks are for (`README.md`), the shipped invariants
   (`invariants.test.ts`), and a replaceable starter test (`starter.test.ts`);
