@@ -42,7 +42,19 @@ jobs:
         if: ${{ !github.event.repository.is_template }}
         run: pnpm check:evidence
       - name: Check internal links
-        run: pnpm dlx linkinator ./dist --silent
+        # linkinator resolves seed URLs against the site's real base path
+        # (see astro.config.mjs), but `dist/` on disk has no such prefix
+        # directory, so pointing it straight at ./dist 404s on every asset.
+        # Mirror the real deploy layout by copying dist/ under a folder named
+        # for the base path and crawling from its parent instead. 429:warn
+        # because Instagram rate-limiting the runner isn't evidence the link
+        # is broken.
+        run: |
+          base=$(grep -oP 'base:\s*"\K[^"]+' astro.config.mjs | sed 's#^/##')
+          mkdir -p /tmp/pages-root/"$base"
+          cp -r dist/. /tmp/pages-root/"$base"/
+          cd /tmp/pages-root
+          pnpm dlx linkinator "$base/**/*.html" --silent --status-code "429:warn"
       - name: Scan for committed secrets
         # Pinned, both halves: the SHA fixes the action's script, and `version`
         # fixes the scanner image, which otherwise floats on :latest. These two

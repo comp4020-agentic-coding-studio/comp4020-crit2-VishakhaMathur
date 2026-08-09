@@ -30,7 +30,12 @@ pnpm install
 pnpm dev        # local dev server
 pnpm check      # most of what CI runs (links, secrets, evidence and deploy are CI-only)
 pnpm build      # produce dist/ (what gets deployed)
-pnpm dlx linkinator ./dist --silent   # reproduce CI's links check before you push
+
+# reproduce CI's links check before you push --- crawled from a copy laid out
+# under the site's base path, since ./dist itself has no such prefix
+base=$(grep -oP 'base:\s*"\K[^"]+' astro.config.mjs | sed 's#^/##')
+mkdir -p /tmp/pages-root/"$base" && cp -r dist/. /tmp/pages-root/"$base"/
+(cd /tmp/pages-root && pnpm dlx linkinator "$base/**/*.html" --silent --status-code "429:warn")
 ```
 
 `mise` is the course's recommended runtime manager. If you use another manager
