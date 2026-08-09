@@ -3,8 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import concertPhoto from "../../assets/concert.jpg";
 import tilleys from "../../assets/tilleys.jpg";
-import backgroundPhoto from "../../assets/background.jpg";
+import backgroundPhoto from "../../assets/barcolor.jpg";
 import bandPhoto from "../../assets/band.png";
+import waynePhoto from "../../assets/wayne.jpg";
 ---
 
 <BaseLayout title="Tilley's Devine Cafe Gallery — cafe, bar &amp; live jazz in Lyneham">
@@ -60,6 +61,13 @@ import bandPhoto from "../../assets/band.png";
         class="round-photo"
         src={bandPhoto}
         alt="The Wayne Kelly Trio setting up to play live jazz at Tilley's"
+        width={480}
+        height={480}
+      />
+      <Image
+        class="round-photo"
+        src={waynePhoto}
+        alt="Wayne Kelly playing piano at Tilley's during a live jazz set"
         width={480}
         height={480}
       />

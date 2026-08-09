@@ -173,7 +173,7 @@ const gallery = [
         <p>House wines, beers &amp; select cocktails.</p>
       </div>
 
-      <div class="quick-info">
+      <div class="quick-info band-dark">
         <h2>Dietary info</h2>
         <ul class="dietary-list">
           <li><span class="badge">V</span> Vegetarian</li>
@@ -183,22 +183,12 @@ const gallery = [
         </ul>
         <p>Please let our team know about any dietary needs.</p>
       </div>
-
-      <div class="quick-info">
-        <h2>Good to know</h2>
-        <ul class="explore-list">
-          <li>Order at the bar</li>
-          <li>10% weekend surcharge</li>
-          <li>Last kitchen orders 30 minutes before closing</li>
-          <li>Thank you for supporting a local Canberra institution</li>
-        </ul>
-      </div>
     </aside>
   </div>
 
-  <section class="menu-section band-dark">
+  <section class="menu-section">
     <h2>Sides</h2>
-    <ul class="price-list price-list-dark">
+    <ul class="price-list">
       {sides.map((item) => (
         <li>
           <span>{item.name}</span>
@@ -215,7 +205,7 @@ const gallery = [
     <div class="drinks-grid">
       <div>
         <h3>Coffee</h3>
-        <ul class="price-list price-list-dark">
+        <ul class="price-list">
           {coffee.map((item) => (
             <li>
               <span>{item.name}</span>
@@ -226,7 +216,7 @@ const gallery = [
       </div>
       <div>
         <h3>Tea</h3>
-        <ul class="price-list price-list-dark">
+        <ul class="price-list">
           {tea.map((item) => (
             <li>
               <span>{item.name}</span>
@@ -237,7 +227,7 @@ const gallery = [
       </div>
       <div>
         <h3>Cold</h3>
-        <ul class="price-list price-list-dark">
+        <ul class="price-list">
           {cold.map((item) => (
             <li>
               <span>
@@ -251,7 +241,7 @@ const gallery = [
       </div>
       <div>
         <h3>Alcohol</h3>
-        <ul class="price-list price-list-dark">
+        <ul class="price-list">
           {alcohol.map((item) => (
             <li>
               <span>{item.name}</span>
@@ -261,6 +251,14 @@ const gallery = [
         </ul>
       </div>
     </div>
+
+    <h2>Good to know</h2>
+    <ul class="explore-list">
+      <li>Order at the bar</li>
+      <li>10% weekend surcharge</li>
+      <li>Last kitchen orders 30 minutes before closing</li>
+      <li>Thank you for supporting a local Canberra institution</li>
+    </ul>
   </section>
 
   <div class="menu-gallery">

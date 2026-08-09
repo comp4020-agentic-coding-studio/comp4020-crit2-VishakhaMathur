@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
+import outsidePhoto from "../../../assets/outside.jpg";
+import insidePhoto from "../../../assets/inside.jpg";
+import hallPhoto from "../../../assets/hall.jpg";
 import exteriorPhoto from "../../../assets/exterior.jpg";
 import counterPhoto from "../../../assets/counter.jpg";
 ---
@@ -25,9 +28,35 @@ import counterPhoto from "../../../assets/counter.jpg";
       src="https://maps.google.com/maps?q=Tilley%27s%20Devine%20Cafe%20Gallery%2C%20Lyneham%20ACT&t=&z=15&ie=UTF8&iwloc=&output=embed"
       loading="lazy"
     ></iframe>
-    <div class="menu-photo-row">
-      <Image src={exteriorPhoto} alt="The exterior of Tilley's on the corner of Brigalow and Wattle Streets, Lyneham" width={640} height={400} />
-      <Image src={counterPhoto} alt="The bar and order counter just inside Tilley's front door" width={640} height={400} />
+    <div class="photo-carousel">
+      <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous photo">&#8249;</button>
+      <div class="carousel-track">
+        <Image src={outsidePhoto} alt="Outdoor seating under umbrellas at Tilley's shopfront on a sunny day" width={640} height={360} />
+        <Image src={insidePhoto} alt="The main dining room at Tilley's, busy with guests at tables" width={640} height={360} />
+        <Image src={hallPhoto} alt="The stage and piano at Tilley's, with the dining room and bar beyond" width={640} height={360} />
+        <Image src={exteriorPhoto} alt="The exterior of Tilley's on the corner of Brigalow and Wattle Streets, Lyneham" width={640} height={360} />
+        <Image src={counterPhoto} alt="The bar and order counter just inside Tilley's front door" width={640} height={360} />
+      </div>
+      <button class="carousel-arrow carousel-next" type="button" aria-label="Next photo">&#8250;</button>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".photo-carousel").forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>(".carousel-track");
+    const prev = carousel.querySelector<HTMLButtonElement>(".carousel-prev");
+    const next = carousel.querySelector<HTMLButtonElement>(".carousel-next");
+    if (!track) return;
+
+    const scrollByOne = (direction: number) => {
+      const item = track.querySelector("img");
+      if (!item) return;
+      const amount = item.getBoundingClientRect().width + 16;
+      track.scrollBy({ left: direction * amount, behavior: "smooth" });
+    };
+
+    prev?.addEventListener("click", () => scrollByOne(-1));
+    next?.addEventListener("click", () => scrollByOne(1));
+  });
+</script>

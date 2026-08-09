@@ -188,14 +188,6 @@ main img {
   color: #6b5f4f;
 }
 
-.price-list-dark li {
-  border-bottom-color: rgb(244 239 230 / 25%);
-}
-
-.price-list-dark .item-note {
-  color: #c9bda3;
-}
-
 .callout-box {
   border: 1px solid #c9bda3;
   border-radius: 0.5rem;
@@ -261,7 +253,6 @@ main img {
 }
 
 .drinks-grid h3 {
-  color: #c9993f;
   margin-top: 0;
 }
 
@@ -378,6 +369,60 @@ main img {
 
 .menu-photo-row .round-photo {
   flex: 0 0 12rem;
+}
+
+.whats-on .menu-photo-row {
+  justify-content: center;
+}
+
+.whats-on .round-photo {
+  width: 19.5rem;
+  height: 19.5rem;
+  max-width: 19.5rem;
+  flex: 0 0 19.5rem;
+  border-radius: 0;
+}
+
+.photo-carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-track img {
+  flex: 0 0 32rem;
+  width: 32rem;
+  max-width: 32rem;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  scroll-snap-align: start;
+  margin: 0;
+}
+
+.carousel-arrow {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid #2a2320;
+  background: #f4efe6;
+  color: #2a2320;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel-arrow:hover {
+  background: #2a2320;
+  color: #f4efe6;
 }
 
 .social-links {
@@ -511,5 +556,11 @@ td {
 
   .menu-gallery {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .carousel-track img {
+    flex-basis: 16rem;
+    width: 16rem;
+    max-width: 16rem;
   }
 }
