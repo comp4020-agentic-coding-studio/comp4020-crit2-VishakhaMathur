@@ -1,32 +1,91 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import concertPhoto from "../../assets/concert.jpg";
+import tilleys from "../../assets/tilleys.jpg";
+import backgroundPhoto from "../../assets/background.jpg";
+import bandPhoto from "../../assets/band.png";
 ---
 
-<!doctype html>
-<html lang="en-AU">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMP4020 prototype</title>
-  </head>
-  <body>
-    <header>
-      <nav aria-label="Primary">
-        <a href="./">Home</a>
-      </nav>
-    </header>
-    <main>
-      <h1>COMP4020 prototype</h1>
-      <p data-testid="intro">
-        Replace this with your prototype. This week's brief is on the course website;
-        <code>spec/README.md</code> explains how the checks in this repo relate to it.
-      </p>
-    </main>
-    <script>
-      const intro = document.querySelector<HTMLElement>('[data-testid="intro"]');
-      if (intro) {
-        intro.dataset.ready = "true";
-      }
-    </script>
-  </body>
-</html>
+<BaseLayout title="Tilley's Devine Cafe Gallery — cafe, bar &amp; live jazz in Lyneham">
+  <section class="hero hero-band" style={`background-image: url(${backgroundPhoto.src})`}>
+    <h1 data-testid="org-name">Tilley's Devine Cafe Gallery</h1>
+    <p class="tagline">
+      A cafe and bar in Lyneham with live jazz most Saturday nights, running
+      since 1984.
+    </p>
+    <Image
+      src={tilleys}
+      alt="A dim, black-and-white night view of Tilley's interior and awning, with the Tilley's logo overlaid"
+      width={640}
+      height={220}
+    />
+    <p><a class="btn-outline" href={`./book/`}>Book a table</a></p>
+    <p><a class="btn-outline" href="https://tilleys.com.au/">The original website</a></p>
+  </section>
+
+  <section class="quick-info band-dark" data-testid="how-to-find">
+    <h2>Opening hours</h2>
+    <div class="table-scroll">
+      <table>
+        <caption>Kitchen orders stop 30 minutes before close. Closed public holidays.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Monday</th><td>7:30am &ndash; 4:30pm</td></tr>
+          <tr><th scope="row">Tuesday</th><td>7:30am &ndash; 4:30pm</td></tr>
+          <tr><th scope="row">Wednesday</th><td>7:30am &ndash; 8pm</td></tr>
+          <tr><th scope="row">Thursday</th><td>7:30am &ndash; 9pm</td></tr>
+          <tr><th scope="row">Friday</th><td>7:30am &ndash; 9pm</td></tr>
+          <tr><th scope="row">Saturday</th><td>8am &ndash; 9pm</td></tr>
+          <tr><th scope="row">Sunday</th><td>8am &ndash; 3pm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Bookings are welcome, just not for the same day &mdash;
+      <a href={`./book/`}>reserve a table online</a> for another date.
+    </p>
+    <p><a href={`./find-us/`}>Map and directions &rarr;</a></p>
+  </section>
+
+  <section class="whats-on band-dark">
+    <h2>What's on</h2>
+    <div class="menu-photo-row">
+      <Image
+        class="round-photo"
+        src={bandPhoto}
+        alt="The Wayne Kelly Trio setting up to play live jazz at Tilley's"
+        width={480}
+        height={480}
+      />
+      <Image
+        src={concertPhoto}
+        alt="The Wayne Kelly Trio playing live jazz at Tilley's"
+        width={640}
+        height={400}
+      />
+    </div>
+    <p>
+      Free live jazz from the Wayne Kelly Trio from 6pm most Saturday nights
+      &mdash; a standing weekly set, not a one-off event (it doesn't run on
+      long weekends). See the <a href={`./history/`}>History</a> page for how that
+      grew out of Tilley's earlier run as a regular live-music venue.
+    </p>
+  </section>
+
+  <section class="explore">
+    <h2>Explore</h2>
+    <ul class="card-grid">
+      <li><a class="card-link" href={`./menu/`}><h3>Menu</h3><p>Breakfast, lunch &amp; dinner, desserts, and drinks</p></a></li>
+      <li><a class="card-link" href={`./history/`}><h3>History</h3><p>Forty years, from 1984 to now</p></a></li>
+      <li><a class="card-link" href={`./find-us/`}><h3>Location</h3><p>Address, map, and directions</p></a></li>
+      <li><a class="card-link" href={`./book/`}><h3>Bookings</h3><p>How to reserve a table</p></a></li>
+      <li><a class="card-link" href="https://app.squareup.com/gift/MLRRRD1970PBZ/order"><h3>Gift Voucher</h3><p>Give the gift of Tilley's</p></a></li>
+    </ul>
+  </section>
+</BaseLayout>

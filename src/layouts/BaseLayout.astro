@@ -1,0 +1,74 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  // How many directories deep the current page sits below the site root
+  // (0 for /, 1 for /menu/, /history/, /find-us/, /book/). Nav links are
+  // built from this rather than the configured base path: a base-prefixed
+  // absolute link resolves fine once deployed under the GitHub Pages
+  // subpath, but linkinator (both the local links check and CI's) scans
+  // dist/ as a plain directory with no notion of that subpath, so it 404s
+  // on exactly the link that works live. Relative links resolve correctly
+  // in both places.
+  depth?: number;
+}
+
+const { title, depth = 0 } = Astro.props;
+const prefix = depth === 0 ? "./" : "../".repeat(depth);
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="wordmark" href={prefix}>Tilley's</a>
+        <nav aria-label="Primary">
+          <a href={prefix}>HOME</a>
+          <a href={`${prefix}menu/`}>MENU</a>
+          <a href="https://app.squareup.com/gift/MLRRRD1970PBZ/order">GIFT VOUCHER</a>
+          <a href={`${prefix}history/`}>HISTORY</a>
+          <a href={`${prefix}find-us/`}>LOCATION</a>
+          <a href={`${prefix}book/`}>BOOKINGS</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="social-links">
+        <a href="https://www.instagram.com/tilleys/" aria-label="Tilley's on Instagram">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/tilleysdevinecafegallery/" aria-label="Tilley's on Facebook">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"
+            />
+          </svg>
+        </a>
+      </div>
+      <p class="site-footer-contact">
+        Cnr Brigalow &amp; Wattle Streets, Lyneham ACT 2602 &mdash;
+        <a href="tel:+61262477753">(02) 6247 7753</a>
+      </p>
+      <p>
+        An unsolicited student redesign of Tilley's Devine Cafe Gallery, made
+        for a university studio brief &mdash; see
+        <a data-testid="org-link" href="https://tilleys.com.au/">their original site</a>.
+      </p>
+    </footer>
+  </body>
+</html>

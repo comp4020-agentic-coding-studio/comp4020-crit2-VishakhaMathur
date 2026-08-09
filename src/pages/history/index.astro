@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import coffeeMachinePhoto from "../../../assets/coffeemacihne.png";
+import bandPhoto from "../../../assets/band.png";
+
+const timeline = [
+  {
+    year: "1984",
+    title: "Tilley's opens",
+    body: "Paulie Higgisson opens Tilley's in January 1984 on the corner of Wattle and Brigalow Streets, Lyneham. Opening night draws around 420 people to a room with seating for 60.",
+  },
+  {
+    year: "1984–1986",
+    title: "A different kind of space",
+    body: "For its first two years, Tilley's restricts groups of men from drinking inside unless accompanied by a woman, a policy aimed at making the room feel safe and comfortable for women.",
+  },
+  {
+    year: "1986",
+    title: "The coffee that's still poured today",
+    body: "Tilley's starts serving Segafredo Organic coffee blend, the same blend still on the menu.",
+    photo: coffeeMachinePhoto,
+    photoAlt: "The cafe's original coffee machine from the 1980s, still displayed at the bar",
+  },
+  {
+    year: "1980s–2005",
+    title: "Music becomes part of Tilley's identity",
+    body: "Tilley's wasn't originally conceived as a live-music venue, but its music program grows into a major part of its reputation, drawing Australian and international performers.",
+  },
+  {
+    year: "1980s–2000s",
+    title: "Breaking new ground",
+    body: "Tilley's becomes known as Australia's first licensed outdoor venue, and bans indoor smoking years before the law requires it.",
+  },
+  {
+    year: "2003",
+    title: "A venue Canberra noticed",
+    body: "The Canberra Times interviews Higgisson about the room's atmosphere and its place in the city's live-music scene.",
+  },
+  {
+    year: "30 Oct 2005",
+    title: "The Last Hurrah",
+    body: "Rising costs and the difficulty of keeping the concert program going bring the regular weekly shows to an end on Sunday, 30 October 2005, closing out two decades as a dedicated live-music room.",
+  },
+  {
+    year: "2006",
+    title: "A Canberra cultural landmark",
+    body: "Tilley's history is documented for the Australian Women's Register, preserving the story of its cultural significance.",
+  },
+  {
+    year: "Today",
+    title: "Jazz returns, weekly",
+    body: "The Wayne Kelly Trio now plays a standing Saturday-night jazz set, reviving Tilley's live-music tradition on a smaller, regular scale.",
+    photo: bandPhoto,
+    photoAlt: "The Wayne Kelly Trio playing a Saturday-night jazz set at Tilley's",
+  },
+];
+---
+
+<BaseLayout title="History — Tilley's Devine Cafe Gallery" depth={1}>
+  <h1>History</h1>
+  <p>
+    Forty years, told as a timeline instead of one long story &mdash; jump to
+    whichever moment you're curious about.
+  </p>
+
+  <ol class="timeline">
+    {
+      timeline.map((entry) => (
+        <li>
+          <span class="timeline-year">{entry.year}</span>
+          <h2>{entry.title}</h2>
+          {entry.photo && (
+            <Image
+              class="round-photo"
+              src={entry.photo}
+              alt={entry.photoAlt}
+              width={480}
+              height={480}
+            />
+          )}
+          <p>{entry.body}</p>
+        </li>
+      ))
+    }
+  </ol>
+</BaseLayout>

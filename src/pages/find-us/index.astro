@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import exteriorPhoto from "../../../assets/exterior.jpg";
+import counterPhoto from "../../../assets/counter.jpg";
+---
+
+<BaseLayout title="Location — Tilley's Devine Cafe Gallery" depth={1}>
+  <h1>Location</h1>
+
+  <section>
+    <h2>Address</h2>
+    <address>
+      Cnr Brigalow &amp; Wattle Streets<br />
+      Lyneham ACT 2602
+    </address>
+    <p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Tilley%27s+Devine+Cafe+Gallery+Lyneham+ACT">
+        Open in Google Maps
+      </a>
+    </p>
+    <iframe
+      title="Map showing Tilley's Devine Cafe Gallery in Lyneham, ACT"
+      class="map-embed"
+      src="https://maps.google.com/maps?q=Tilley%27s%20Devine%20Cafe%20Gallery%2C%20Lyneham%20ACT&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      loading="lazy"
+    ></iframe>
+    <div class="menu-photo-row">
+      <Image src={exteriorPhoto} alt="The exterior of Tilley's on the corner of Brigalow and Wattle Streets, Lyneham" width={640} height={400} />
+      <Image src={counterPhoto} alt="The bar and order counter just inside Tilley's front door" width={640} height={400} />
+    </div>
+  </section>
+</BaseLayout>

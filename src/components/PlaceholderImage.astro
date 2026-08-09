@@ -1,0 +1,21 @@
+---
+// Stands in until real photos exist. Renders as a real <img> (inline SVG data
+// URI, no network request) so alt text and the eventual swap to a real photo
+// work the same way as for any other image — just change `src`.
+// `alt` describes what the real photo should show, written as if it already
+// existed. `label` is the visible placeholder caption, not a11y text.
+interface Props {
+  alt: string;
+  label: string;
+}
+
+const { alt, label } = Astro.props;
+
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400">
+  <rect width="640" height="400" fill="#e4ddd1"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#6b5f4f">${label}</text>
+</svg>`;
+const src = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+---
+
+<img class="placeholder-image" {src} {alt} width="640" height="400" />

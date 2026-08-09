@@ -1,0 +1,271 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import hallPhoto from "../../../assets/hall.jpg";
+import breakfastPhoto from "../../../assets/breakfast.jpg";
+import squidPhoto from "../../../assets/squid.jpg";
+import foodPhoto from "../../../assets/food.jpg";
+import breakiePhoto from "../../../assets/breakie.jpg";
+import chickenPhoto from "../../../assets/chicken.jpg";
+import fishAndChipsPhoto from "../../../assets/fishandchips.jpg";
+import cheesecakePhoto from "../../../assets/cheesecake.jpg";
+import shakesPhoto from "../../../assets/shakes.jpg";
+
+const breakfast = [
+  { name: "Poached eggs", price: "15" },
+  { name: "Fried eggs", price: "15" },
+  { name: "Avocado pide", price: "18" },
+  { name: "Breakfast toastie", price: "16" },
+  { name: "Porridge", price: "14" },
+  { name: "Pancakes", price: "16" },
+  { name: "Muesli", price: "14" },
+  { name: "Sunday morning", price: "22", note: "eggs, bacon, sausage, mushrooms, tomato, spinach" },
+  { name: "Hashbrowns", price: "6" },
+  { name: "French toast", price: "16" },
+  { name: "Cheese & tomato toasty", price: "9" },
+  { name: "Cheese & ham toasty", price: "9" },
+];
+
+const lunchDinner = [
+  { name: "Caesar salad", price: "18" },
+  { name: "Fish and chips", price: "24" },
+  { name: "Fritters", price: "18" },
+  { name: "Pork belly", price: "26" },
+  { name: "Chicken parm", price: "26" },
+  { name: "Okonomiyaki", price: "20" },
+  { name: "Pie", price: "18" },
+  { name: "Quiche", price: "18" },
+  { name: "Squid", price: "22" },
+  { name: "Dahl", price: "18" },
+  { name: "Pizza", price: "20" },
+  { name: "Tomato ravioli", price: "22" },
+  { name: "Spaghetti", price: "20" },
+  { name: "Rigatoni", price: "22" },
+  { name: "Coos coos salad", price: "18" },
+  { name: "Nachos", price: "18" },
+];
+
+const sides = [
+  { name: "Spring rolls (4)", price: "12" },
+  { name: "Potato fries", price: "8" },
+  { name: "Sweet potato fries", price: "9" },
+  { name: "Prawn twisters (4)", price: "12" },
+  { name: "Chicken nuggets (6)", price: "10" },
+  { name: "Hashbrowns (2)", price: "6" },
+];
+
+const coffee = [
+  { name: "Espresso", price: "4.0" },
+  { name: "Long black", price: "4.5" },
+  { name: "Flat white", price: "4.7" },
+  { name: "Cappuccino", price: "4.7" },
+  { name: "Latte", price: "5.0" },
+  { name: "Mocha", price: "5.5" },
+  { name: "Macchiato", price: "4.2" },
+];
+
+const tea = [
+  { name: "English breakfast", price: "4.5" },
+  { name: "Earl grey", price: "4.5" },
+  { name: "Green tea", price: "4.5" },
+  { name: "Peppermint", price: "4.5" },
+  { name: "Chamomile", price: "4.5" },
+  { name: "Lemongrass & ginger", price: "4.5" },
+  { name: "Chai latte", price: "5.0" },
+];
+
+const cold = [
+  { name: "Iced coffee", price: "6.0" },
+  { name: "Iced chocolate", price: "6.0" },
+  { name: "Iced mocha", price: "6.0" },
+  { name: "Milkshakes", price: "7.0", note: "chocolate, vanilla, strawberry, caramel" },
+  { name: "Soft drinks", price: "4.5" },
+  { name: "Juices", price: "5.0" },
+];
+
+const alcohol = [
+  { name: "Beer", price: "8.5" },
+  { name: "Cider", price: "8.5" },
+  { name: "House wine", price: "9.5" },
+  { name: "Premium wine", price: "12.5" },
+  { name: "Cocktails", price: "14.0" },
+  { name: "Spirits", price: "10.0+" },
+];
+
+const gallery = [
+  { src: breakiePhoto, alt: "Poached eggs with hollandaise and spinach on toasted sourdough" },
+  { src: chickenPhoto, alt: "Crispy chicken with slaw, herbs and a sticky glaze" },
+  { src: fishAndChipsPhoto, alt: "Beer-battered fish and chips with lemon and salad leaves" },
+  { src: cheesecakePhoto, alt: "A slice of cheesecake with berry compote and whipped cream" },
+  { src: shakesPhoto, alt: "A chocolate milkshake topped with cream and banana" },
+];
+---
+
+<BaseLayout title="Menu — Tilley's Devine Cafe Gallery" depth={1}>
+  <section class="hero hero-band menu-hero" style={`background-image: url(${hallPhoto.src})`}>
+    <h1>Menu</h1>
+    <p class="tagline">Good food, great drinks &amp; good company</p>
+    <div class="menu-photo-row">
+      <Image
+        src={breakfastPhoto}
+        alt="A full breakfast plate of bacon, poached eggs, hashbrowns, sausage and toast"
+        width={400}
+        height={260}
+      />
+      <Image
+        src={squidPhoto}
+        alt="Golden crispy fried squid served with garden salad and a dipping sauce"
+        width={400}
+        height={260}
+      />
+      <Image
+        src={foodPhoto}
+        alt="Crispy fried chicken drizzled with sauce over slaw, garnished with coriander"
+        width={400}
+        height={260}
+      />
+    </div>
+  </section>
+
+  <p>
+    Order at the bar, noting your table number. Fully licensed, strictly no
+    BYO.
+  </p>
+
+  <div class="menu-layout">
+    <div class="menu-columns">
+      <section class="menu-section">
+        <h2>Breakfast</h2>
+        <ul class="price-list">
+          {breakfast.map((item) => (
+            <li>
+              <span>
+                {item.name}
+                {item.note && <span class="item-note">{item.note}</span>}
+              </span>
+              <span class="price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="callout-box">
+          <p class="callout-title">Toast</p>
+          <p>with jam, butter, vegemite or honey &mdash; <span class="price">6</span></p>
+        </div>
+      </section>
+
+      <section class="menu-section">
+        <h2>Lunch / dinner</h2>
+        <ul class="price-list">
+          {lunchDinner.map((item) => (
+            <li>
+              <span>{item.name}</span>
+              <span class="price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <aside class="menu-sidebar">
+      <div class="promo-card">
+        <h2>Happy hour</h2>
+        <p class="promo-time">Every Friday, 5:30pm&ndash;6:30pm</p>
+        <p>House wines, beers &amp; select cocktails.</p>
+      </div>
+
+      <div class="quick-info">
+        <h2>Dietary info</h2>
+        <ul class="dietary-list">
+          <li><span class="badge">V</span> Vegetarian</li>
+          <li><span class="badge">VG</span> Vegan</li>
+          <li><span class="badge">GF</span> Gluten free</li>
+          <li><span class="badge">DF</span> Dairy free</li>
+        </ul>
+        <p>Please let our team know about any dietary needs.</p>
+      </div>
+
+      <div class="quick-info">
+        <h2>Good to know</h2>
+        <ul class="explore-list">
+          <li>Order at the bar</li>
+          <li>10% weekend surcharge</li>
+          <li>Last kitchen orders 30 minutes before closing</li>
+          <li>Thank you for supporting a local Canberra institution</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <section class="menu-section band-dark">
+    <h2>Sides</h2>
+    <ul class="price-list price-list-dark">
+      {sides.map((item) => (
+        <li>
+          <span>{item.name}</span>
+          <span class="price">{item.price}</span>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Drinks</h2>
+    <p>
+      Segafredo Organic coffee blend, poured since 1986, plus a full bar and a
+      wine list from the Canberra region and beyond, by the glass or bottle.
+    </p>
+    <div class="drinks-grid">
+      <div>
+        <h3>Coffee</h3>
+        <ul class="price-list price-list-dark">
+          {coffee.map((item) => (
+            <li>
+              <span>{item.name}</span>
+              <span class="price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3>Tea</h3>
+        <ul class="price-list price-list-dark">
+          {tea.map((item) => (
+            <li>
+              <span>{item.name}</span>
+              <span class="price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3>Cold</h3>
+        <ul class="price-list price-list-dark">
+          {cold.map((item) => (
+            <li>
+              <span>
+                {item.name}
+                {item.note && <span class="item-note">{item.note}</span>}
+              </span>
+              <span class="price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3>Alcohol</h3>
+        <ul class="price-list price-list-dark">
+          {alcohol.map((item) => (
+            <li>
+              <span>{item.name}</span>
+              <span class="price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="menu-gallery">
+    {gallery.map((photo) => (
+      <Image src={photo.src} alt={photo.alt} width={400} height={400} />
+    ))}
+  </div>
+</BaseLayout>
