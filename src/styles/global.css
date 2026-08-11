@@ -20,11 +20,11 @@ main {
 }
 
 a {
-  color: #a97e2e;
+  color: #a28422;
 }
 
 a:hover {
-  color: #c9993f;
+  color: #c19f31;
 }
 
 .placeholder-image,
@@ -53,11 +53,11 @@ main img {
 
 .band-dark h2,
 .band-dark h3 {
-  color: #c9993f;
+  color: #c19f31;
 }
 
 .band-dark a {
-  color: #d9ad55;
+  color: #dcbc50;
 }
 
 .band-light {
@@ -86,7 +86,7 @@ main img {
   font-family: Georgia, "Iowan Old Style", serif;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #c9993f;
+  color: #c19f31;
   text-decoration: none;
 }
 
@@ -214,7 +214,7 @@ main img {
 }
 
 .promo-card h2 {
-  color: #d9ad55;
+  color: #dcbc50;
   margin-top: 0;
 }
 
@@ -242,7 +242,7 @@ main img {
   margin-right: 0.5rem;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #a97e2e;
+  color: #a28422;
 }
 
 .drinks-grid {
@@ -288,7 +288,7 @@ main img {
 .card-grid h3 {
   margin: 0 0 0.4rem;
   font-size: 1.05rem;
-  color: #c9993f;
+  color: #c19f31;
 }
 
 .card-grid .card-link {
@@ -305,7 +305,7 @@ main img {
 }
 
 .card-grid .card-link:hover h3 {
-  color: #d9ad55;
+  color: #dcbc50;
 }
 
 .card-grid .card-link p {
@@ -315,16 +315,16 @@ main img {
 
 .btn-outline {
   display: inline-block;
-  border: 2px solid #c9993f;
+  border: 2px solid #c19f31;
   border-radius: 2rem;
   padding: 0.5rem 1.5rem;
-  color: #c9993f;
+  color: #c19f31;
   font-weight: 700;
   text-decoration: none;
 }
 
 .btn-outline:hover {
-  background: #c9993f;
+  background: #c19f31;
   color: #2a2320;
 }
 
@@ -438,7 +438,7 @@ main img {
 }
 
 .social-links a:hover {
-  color: #c9993f;
+  color: #c19f31;
 }
 
 table {
@@ -471,7 +471,7 @@ td {
 }
 
 .quick-info.band-dark caption {
-  color: #d9ad55;
+  color: #dcbc50;
 }
 
 .explore-list {
